@@ -1,9 +1,4 @@
-public class L3Support implements EscalationSupport{
-    EscalationSupport nextHandler;
-    @Override
-    public void setNextHandler(EscalationSupport escalationSupport) {
-        this.nextHandler=escalationSupport;
-    }
+public class L3Support extends SupportHandler{
 
     @Override
     public void handleEscalation(SupportTicket ticket) {
