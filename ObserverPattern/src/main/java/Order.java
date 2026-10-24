@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// Tight coupling between Order and ObserverHandler -> This isn't needed -> Try to add objects in methods if needed
+// Don't add classes as field even when it's not necessary.
 public class Order {
     private int orderId;
     private String orderDesc;
@@ -13,28 +15,27 @@ public class Order {
         this.orderStatus="PENDING";
     }
 
-    void StatusChange(String orderStatus, ObserverHandler observerHandler) {
-        observerHandler.notifyObserver();
+    int getOrderId(){
+        return this.orderId;
+    }
+
+    void statusChange(String orderStatus, ObserverHandler observerHandler) {
+        this.orderStatus=orderStatus;
+        observerHandler.notifyObserver(this);
     }
 }
 
 
 class ObserverHandler {
-    // You can use OrderId
-    Order order;
     List<OrderObserver> observerList = new ArrayList<>();
 
-    ObserverHandler(Order order){
-        this.order=order;
-    }
-
-    void updateObserver(OrderObserver orderObserver){
+    void addObserver(OrderObserver orderObserver){
         observerList.add(orderObserver);
     }
 
-    void notifyObserver(){
+    void notifyObserver(Order order){
         for (OrderObserver orderObserver : observerList) {
-            orderObserver.notifyStatusChange();
+            orderObserver.notifyStatusChange(order);
         }
     }
 

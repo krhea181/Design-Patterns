@@ -1,6 +1,7 @@
 public class InventoryManage implements OrderObserver{
+
     @Override
-    public void notifyStatusChange() {
-        System.out.print("Notification status changes done!!");
+    public void notifyStatusChange(Order order) {
+        System.out.println("Inventory -> Order status update for order : "+order.getOrderId() );
     }
 }

@@ -1,3 +1,3 @@
 public interface OrderObserver {
-    void notifyStatusChange();
+    void notifyStatusChange(Order order);
 }
