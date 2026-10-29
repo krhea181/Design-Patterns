@@ -1,7 +1,8 @@
 public class PaymentProcessor implements PaymentInterface {
 
+
     @Override
-    public void processPayment(int val) {
-        System.out.print("Usd value to be processed!!");
+    public void processPayment(int val, int rupees) {
+        System.out.println(rupees + " Rupees are getting processed!!");
     }
 }

@@ -1,3 +1,3 @@
 public interface PaymentInterface {
-    void processPayment(int val);
+    void processPayment(int val,int rupees);
 }
